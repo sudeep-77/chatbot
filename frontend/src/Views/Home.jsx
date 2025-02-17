@@ -26,7 +26,7 @@ const Home = () => {
     const newUserQuery=[...messages,{role:'user',text:ques}]
     setMessages(newUserQuery)
     setQueryText("")
-    axios.get(`http://localhost:8000/api/ask/?question=${ques}`).then(res=>{setMessages(prev=>[...prev,{role:"bot",text:res.data.answer}]);setIsLoading(false)})
+    axios.get(`${BACKEND_URL}/api/ask/?question=${ques}`).then(res=>{setMessages(prev=>[...prev,{role:"bot",text:res.data.answer}]);setIsLoading(false)})
   }
   const handleKeyDown=(e)=>{
     if(e.key!=='Enter'||!queryText) return
@@ -38,7 +38,7 @@ const Home = () => {
   }, [messages, isLoading])
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/get_faq/`).then(res=>{setFaqList(res.data);})
+    axios.get(`${BACKEND_URL}/api/get_faq/`).then(res=>{setFaqList(res.data);})
   }, [])
  
   return (
