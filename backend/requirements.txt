@@ -5,6 +5,7 @@ uvicorn[standard]
 
 # Database and ORM
 asyncpg
+asyncpsycopg
 sqlalchemy
 alembic
 
