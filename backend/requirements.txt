@@ -1,0 +1,17 @@
+# FastAPI and ASGI Server
+fastapi
+uvicorn[standard]
+
+# Database and ORM
+asyncpg
+sqlalchemy
+alembic
+
+# Environment Variables
+python-dotenv
+
+# OpenAI API
+openai
+
+# CORS
+fastapi[all]

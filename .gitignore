@@ -1,0 +1,48 @@
+# General
+.DS_Store
+*.log
+.env
+
+# Python (FastAPI Backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+venv/
+env/
+*.egg-info/
+alembic/versions/*.pyc
+
+# Virtual Environment
+venv/
+env/
+*.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python IDE Configs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# React (Frontend)
+node_modules/
+dist/
+*.cache
+.yarn.lock
+
+# Build Artifacts
+*.log
+build/
+coverage/
+.npm/
+
+# Git
+*.orig
+*.bak
+
+# OS-specific files
+Thumbs.db
