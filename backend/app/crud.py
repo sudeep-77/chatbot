@@ -1,18 +1,17 @@
-from sqlalchemy.future import select
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import Session
 from . import models, schemas
 
-async def get_faq_by_question(db: AsyncSession, question: str):
-    result = await db.execute(select(models.FAQ).filter(models.FAQ.question == question))
-    return result.scalars().first()
+def get_faq_by_question(db: Session, question: str):
+    result = db.query(models.FAQ).filter(models.FAQ.question == question)
+    return result.first()
 
-async def get_faq_list(db: AsyncSession):
-    result = await db.execute(select(models.FAQ))
-    return result.scalars().all()
+def get_faq_list(db: Session):
+    result = db.query(models.FAQ)
+    return result.all()
 
-async def create_faq(db: AsyncSession, faq: schemas.FAQCreate):
+def create_faq(db: Session, faq: schemas.FAQCreate):
     new_faq = models.FAQ(**faq.dict())
     db.add(new_faq)
-    await db.commit()
-    await db.refresh(new_faq)
+    db.commit()
+    db.refresh(new_faq)
     return new_faq

@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import router
-from .database import init_db
+# from .database import init_db
 
 app = FastAPI()
 
 origins = [
+    "*",
     "http://localhost:5173",
 ]
 app.add_middleware(
@@ -16,9 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-async def startup():
-    await init_db()
+# @app.on_event("startup")
+# async def startup():
+#     await init_db()
 
 app.include_router(router, prefix="/api")
 
