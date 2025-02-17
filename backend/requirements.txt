@@ -1,6 +1,6 @@
 # FastAPI and ASGI Server
 fastapi
-psycopg2 
+psycopg2-binary
 uvicorn[standard]
 
 # Database and ORM
