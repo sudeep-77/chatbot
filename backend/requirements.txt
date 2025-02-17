@@ -1,5 +1,6 @@
 # FastAPI and ASGI Server
 fastapi
+psycopg2 
 uvicorn[standard]
 
 # Database and ORM
