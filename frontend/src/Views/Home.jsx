@@ -2,6 +2,8 @@ import { useState,useEffect,useRef } from "react"
 import axios from 'axios';
 import MessageBubble from "../Components/MessageBubble";
 
+const BACKEND_URL=import.meta.env.VITE_BACKEND_URL;
+
 const Home = () => {
   const [queryText,setQueryText]=useState('');
   const [messages,setMessages]=useState([]);
@@ -16,7 +18,7 @@ const Home = () => {
     const newUserQuery=[...messages,{role:'user',text:queryText}]
     setMessages(newUserQuery)
     setQueryText("")
-    axios.get(`http://localhost:8000/api/ask/?question=${queryText}`).then(res=>{setMessages(prev=>[...prev,{role:"bot",text:res.data.answer}]);setIsLoading(false)})
+    axios.get(`${BACKEND_URL}/api/ask/?question=${queryText}`).then(res=>{setMessages(prev=>[...prev,{role:"bot",text:res.data.answer}]);setIsLoading(false)})
   }
 
   const handleFAQClick=(ques)=>{
