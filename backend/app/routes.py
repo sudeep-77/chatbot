@@ -17,10 +17,10 @@ def get_faq(db: Session = Depends(database.get_db)):
     return [{"id":faq.id,"question":faq.question} for faq in faq_list]
 
 @router.get("/ask/")
-def ask_chatbot(question: str, db: Session = Depends(database.get_db)):
+async def ask_chatbot(question: str, db: Session = Depends(database.get_db)):
     existing_faq = crud.get_faq_by_question(db, question)
     if existing_faq:
         return {"answer": existing_faq.answer}
     else:
-        ai_answer = gpt_service.get_ai_response(question)
+        ai_answer = await gpt_service.get_ai_response(question)
         return {"answer": ai_answer}
