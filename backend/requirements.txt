@@ -11,7 +11,7 @@ alembic
 python-dotenv
 
 # OpenAI API
-openai
+openai==0.28.0
 
 # CORS
 fastapi[all]
